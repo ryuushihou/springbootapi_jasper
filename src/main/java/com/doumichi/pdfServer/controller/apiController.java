@@ -21,8 +21,11 @@ import java.util.Map;
 @Controller
 public class apiController {
 
-    @Autowired
-    private InfoService infoService;
+    private final InfoService infoService;
+
+    public apiController(InfoService infoService){
+        this.infoService = infoService;
+    }
 
     @ResponseBody
     @RequestMapping("getUserList")
@@ -33,7 +36,7 @@ public class apiController {
         String userId = tuserList.get(0).getUser();
         String password = tuserList.get(0).getPassword();
 
-        Map param = new HashMap();
+        Map<String,Object> param = new HashMap<String,Object>();
         param.put("userId",userId);
         param.put("password",password);
         InputStream inputStream = apiController.class.getClassLoader().getResourceAsStream("DuomichiUserReport.jasper");

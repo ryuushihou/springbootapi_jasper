@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class InfoService implements UserMapper{
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    public InfoService(UserMapper userMapper){
+        this.userMapper = userMapper;
+    }
+
     @Override
     public List<Tuser> getUserList() {
         return userMapper.getUserList();
