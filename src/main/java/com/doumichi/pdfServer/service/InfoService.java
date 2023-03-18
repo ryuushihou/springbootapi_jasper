@@ -8,17 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class InfoService implements UserMapper{
-
-    private final UserMapper userMapper;
-
-    public InfoService(UserMapper userMapper){
-        this.userMapper = userMapper;
-    }
-
-    @Override
-    public List<Tuser> getUserList() {
-        return userMapper.getUserList();
-    }
-
+public interface InfoService{
+    List<Tuser> getUserList();
 }

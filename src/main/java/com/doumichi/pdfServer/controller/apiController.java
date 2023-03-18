@@ -32,17 +32,22 @@ public class apiController {
     private String getUserList() throws Exception{
         List<Tuser> tuserList = infoService.getUserList();
 
-        // jasperreport pdf出力
         String userId = tuserList.get(0).getUser();
         String password = tuserList.get(0).getPassword();
 
-        Map<String,Object> param = new HashMap<String,Object>();
-        param.put("userId",userId);
-        param.put("password",password);
-        InputStream inputStream = apiController.class.getClassLoader().getResourceAsStream("DuomichiUserReport.jasper");
-        JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream,param,new JREmptyDataSource());
-        JasperExportManager
-                .exportReportToPdfFile(jasperPrint,"/Users/liuzhipeng/DuomichiUserReport.pdf");
-        return JSON.toJSONString(tuserList);
+        return userId + password + "ok";
+
+        // jasperreport pdf出力
+//        String userId = tuserList.get(0).getUser();
+//        String password = tuserList.get(0).getPassword();
+//
+//        Map<String,Object> param = new HashMap<String,Object>();
+//        param.put("userId",userId);
+//        param.put("password",password);
+//        InputStream inputStream = apiController.class.getClassLoader().getResourceAsStream("DuomichiUserReport.jasper");
+//        JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream,param,new JREmptyDataSource());
+//        JasperExportManager
+//                .exportReportToPdfFile(jasperPrint,"/Users/liuzhipeng/DuomichiUserReport.pdf");
+//        return JSON.toJSONString(tuserList);
     }
 }
